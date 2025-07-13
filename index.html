@@ -1,0 +1,1479 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>मस्जिद मदरसा कमेटी रमिया बेहड़ - PWA</title>
+  
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="data:application/manifest+json;base64,ewogICJuYW1lIjogIuS4reWQjeS4reWJjeS4iuS4reS4reWQjeS4reS4reWQjeS4reS4reWQjeS4reS4reWQjSIsCiAgInNob3J0X25hbWUiOiAi5Lit5ZCN5Lit5YGNIiwKICAic3RhcnRfdXJsIjogIi4iLAogICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLAogICJiYWNrZ3JvdW5kX2NvbG9yIjogIiMxYTI5ODAiLAogICJ0aGVtZV9jb2xvciI6ICIjMWEyOTgwIiwKICAiZGVzY3JpcHRpb24iOiAi5Lit5ZCN5Lit5YGN5LiK5Lit5Lit5ZCN5Lit5Lit5ZCN5Lit5Lit5ZCNIiwKICAiaWNvbnMiOiBbCiAgICB7CiAgICAgICJzcmMiOiAiaWNvbnMvaWNvbi0xOTJ4MTkyLnBuZyIsCiAgICAgICJzaXplcyI6ICIxOTJ4MTkyIiwKICAgICAgInR5cGUiOiAiaW1hZ2UvcG5nIiwKICAgICAgInB1cnBvc2UiOiAiYW55IgogICAgfSwKICAgIHsKICAgICAgInNyYyI6ICJpY29ucy9pY29uLTUxMng1MTIucG5nIiwKICAgICAgInNpemVzIjogIjUxMng1MTIiLAogICAgICAidHlwZSI6ICJpbWFnZS9wbmciLAogICAgICAicHVycG9zZSI6ICJtYXNrYWJsZSIKICAgIH0KICBdCn0=">
+  
+  <!-- iOS Support -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="मस्जिद मदरसा कमेटी">
+  <link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/jituchauhan/simple-icons@master/icons/mosque.svg">
+  
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#1a2980">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjMWEyOTgwIiBkPSJNMjU2IDBMMCAxMjh2Mzg0aDUxMlYxMjhMMjU2IDB6bTAgNDhsMTkyIDk2djQ4SDY0di00OGwxOTItOTZ6TTY0IDQxNlYyNDBoMzg0djE3Nkg2NHoiLz48L3N2Zz4=">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background: linear-gradient(135deg, #1a2a6c, #b21f1f, #2b5876);
+      color: #333;
+      min-height: 100vh;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    /* Login Container */
+    #loginContainer {
+      width: 100%;
+      max-width: 450px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+      padding: 30px;
+      text-align: center;
+      transition: all 0.5s ease;
+    }
+    
+    #loginContainer h1 {
+      color: #1a2980;
+      margin-bottom: 25px;
+    }
+    
+    .login-logo {
+      width: 100px;
+      height: 100px;
+      background: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 42px;
+      color: #1a2980;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      margin: 0 auto 20px;
+    }
+    
+    .input-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+    
+    .input-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #1a2980;
+    }
+    
+    .input-group input {
+      width: 100%;
+      padding: 14px 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: all 0.3s;
+    }
+    
+    .input-group input:focus {
+      outline: none;
+      border-color: #26d0ce;
+      box-shadow: 0 0 10px rgba(38, 208, 206, 0.3);
+    }
+    
+    /* Remember Me Checkbox Styles */
+    .remember-me {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 15px 0;
+    }
+
+    .remember-me input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      accent-color: #1a2980;
+    }
+
+    .remember-me label {
+      font-weight: normal;
+      color: #555;
+      cursor: pointer;
+    }
+    
+    .login-btn {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(to right, #1a2980, #26d0ce);
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-weight: 600;
+      font-size: 18px;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-top: 10px;
+    }
+    
+    .login-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    
+    .login-footer {
+      margin-top: 25px;
+      color: #666;
+      font-size: 14px;
+    }
+    
+    .login-footer a {
+      color: #1a2980;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    
+    .error-message {
+      background: #ff6b6b;
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+      margin-top: 15px;
+      display: none;
+    }
+    
+    /* Main App Container */
+    #appContainer {
+      display: none;
+      width: 100%;
+      max-width: 1000px;
+    }
+    
+    .container {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+      margin: 20px 0;
+    }
+    
+    header {
+      background: linear-gradient(to right, #1a2980, #26d0ce);
+      color: white;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .pwa-controls {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 10px;
+    }
+    
+    .pwa-btn {
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.9);
+      border: none;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #1a2980;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .pwa-btn:hover {
+      transform: scale(1.1);
+      background: white;
+    }
+    
+    .logo {
+      width: 80px;
+      height: 80px;
+      background: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      color: #1a2980;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      margin-bottom: 15px;
+    }
+    
+    .app-title {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
+    
+    .app-subtitle {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+    
+    .pwa-status {
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 20px;
+      padding: 5px 10px;
+      font-size: 0.8rem;
+      margin-top: 5px;
+    }
+    
+    .user-info {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+    }
+    
+    .logout-btn {
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    
+    .filter-system {
+      padding: 15px 20px;
+      background: #f0f7ff;
+      border-bottom: 1px solid #d0e3ff;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+    
+    .filter-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .filter-label {
+      font-weight: 600;
+      color: #1a2980;
+      white-space: nowrap;
+    }
+    
+    .filter-btn {
+      padding: 8px 15px;
+      border-radius: 20px;
+      border: 1px solid #1a2980;
+      background: white;
+      color: #1a2980;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .filter-btn:hover {
+      background: #1a2980;
+      color: white;
+    }
+    
+    .filter-btn.active {
+      background: #1a2980;
+      color: white;
+    }
+    
+    .month-dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .month-dropdown-btn {
+      padding: 8px 15px;
+      border-radius: 20px;
+      border: 1px solid #1a2980;
+      background: white;
+      color: #1a2980;
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    
+    .month-dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 180px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.1);
+      z-index: 1;
+      border-radius: 8px;
+      overflow: hidden;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+    
+    .month-dropdown-content.show {
+      display: block;
+    }
+    
+    .month-dropdown-content a {
+      color: #333;
+      padding: 10px 15px;
+      text-decoration: none;
+      display: block;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .month-dropdown-content a:hover {
+      background-color: #f5f5f5;
+    }
+    
+    .search-container {
+      padding: 20px;
+      background: #f8f9fa;
+      border-bottom: 1px solid #eee;
+      position: relative;
+    }
+    
+    .search-container i {
+      position: absolute;
+      left: 35px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #777;
+    }
+    
+    .search-container input {
+      width: 100%;
+      padding: 12px 15px 12px 40px;
+      border: 1px solid #ddd;
+      border-radius: 30px;
+      font-size: 16px;
+      transition: all 0.3s;
+    }
+    
+    .search-container input:focus {
+      outline: none;
+      border-color: #26d0ce;
+      box-shadow: 0 0 10px rgba(38, 208, 206, 0.3);
+    }
+    
+    .list-container {
+      padding: 20px;
+      min-height: 300px;
+    }
+    
+    .accordion {
+      background: white;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+    
+    .accordion:hover {
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .accordion-header {
+      padding: 15px 20px;
+      background: linear-gradient(to right, #f8f9fa, #e9ecef);
+      color: #333;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      font-size: 18px;
+      transition: all 0.3s;
+    }
+    
+    .accordion-header:hover {
+      background: linear-gradient(to right, #e9ecef, #dee2e6);
+    }
+    
+    .accordion-header i {
+      transition: transform 0.3s;
+      color: #1a2980;
+    }
+    
+    .accordion.active .accordion-header i {
+      transform: rotate(180deg);
+    }
+    
+    .accordion-body {
+      display: none;
+      padding: 20px;
+      border-top: 1px solid #eee;
+    }
+    
+    .accordion.active .accordion-body {
+      display: block;
+    }
+    
+    .contact-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px dashed #eee;
+    }
+    
+    .phone-number {
+      font-size: 18px;
+      font-weight: 500;
+      color: #1a2980;
+    }
+    
+    .action-buttons {
+      display: flex;
+      gap: 10px;
+    }
+    
+    .action-btn {
+      padding: 10px 15px;
+      border-radius: 8px;
+      border: none;
+      color: white;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .call-btn {
+      background: linear-gradient(to right, #00b09b, #96c93d);
+    }
+    
+    .sms-btn {
+      background: linear-gradient(to right, #2193b0, #6dd5ed);
+    }
+    
+    .action-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    
+    .months-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+    }
+    
+    .month-input {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .month-input label {
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #555;
+    }
+    
+    .month-input input {
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: all 0.3s;
+    }
+    
+    .month-input input:focus {
+      outline: none;
+      border-color: #26d0ce;
+      box-shadow: 0 0 8px rgba(38, 208, 206, 0.3);
+    }
+    
+    .snackbar {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #333;
+      color: white;
+      padding: 15px 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      z-index: 1000;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    
+    .snackbar.show {
+      opacity: 1;
+    }
+    
+    .loading {
+      text-align: center;
+      padding: 30px;
+      color: #555;
+    }
+    
+    .loading i {
+      font-size: 40px;
+      margin-bottom: 15px;
+      color: #1a2980;
+      animation: spin 1.5s linear infinite;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .empty-state {
+      text-align: center;
+      padding: 40px 20px;
+      color: #666;
+    }
+    
+    .empty-state i {
+      font-size: 50px;
+      margin-bottom: 15px;
+      color: #ccc;
+    }
+    
+    .footer {
+      margin-top: auto;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      opacity: 0.8;
+    }
+    
+    .summary-box {
+      background: #f0f7ff;
+      border-radius: 10px;
+      padding: 15px;
+      margin: 15px 0;
+      text-align: center;
+      border: 1px solid #d0e3ff;
+    }
+    
+    .summary-title {
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #1a2980;
+    }
+   
+    .summary-value {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #1a2980;
+    }
+    
+    .offline-message {
+      background: #ff6b6b;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      font-weight: 500;
+    }
+    
+    @media (max-width: 768px) {
+      .filter-system {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .contact-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+      }
+      
+      .action-buttons {
+        width: 100%;
+      }
+      
+      .action-btn {
+        flex-grow: 1;
+        justify-content: center;
+      }
+      
+      .pwa-controls {
+        top: 10px;
+        right: 10px;
+      }
+      
+      .user-info {
+        position: static;
+        margin-top: 15px;
+      }
+    }
+    
+    .debug-info {
+      background: #f8f9fa;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+      font-size: 14px;
+      display: none;
+    }
+    
+    .month-indicator {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      margin-left: 5px;
+      vertical-align: middle;
+    }
+    
+    .month-filled {
+      background-color: #00b09b;
+    }
+    
+    .month-empty {
+      background-color: #ff6b6b;
+    }
+    
+    .month-status {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+    
+    .month-count {
+      background: #1a2980;
+      color: white;
+      border-radius: 12px;
+      padding: 3px 10px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Login Container -->
+  <div id="loginContainer">
+    <div class="login-logo">
+      <i class="fas fa-mosque"></i>
+    </div>
+    <h1>मस्जिद मदरसा कमेटी रमिया बेहड़</h1>
+    <form id="loginForm">
+      <div class="input-group">
+        <label for="username"><i class="fas fa-user"></i> यूजर आईडी</label>
+        <input type="text" id="username" placeholder="अपना यूजर आईडी दर्ज करें" required>
+      </div>
+      
+      <div class="input-group">
+        <label for="password"><i class="fas fa-lock"></i> पासवर्ड</label>
+        <input type="password" id="password" placeholder="अपना पासवर्ड दर्ज करें" required>
+      </div>
+      
+      <div class="input-group remember-me">
+        <input type="checkbox" id="rememberMe">
+        <label for="rememberMe">मुझे याद रखें</label>
+      </div>
+      
+      <button type="submit" class="login-btn">
+        <i class="fas fa-sign-in-alt"></i> लॉग इन करें
+      </button>
+      
+      <div class="error-message" id="loginError">
+        <i class="fas fa-exclamation-circle"></i> <span id="errorText">गलत यूजर आईडी या पासवर्ड</span>
+      </div>
+    </form>
+    
+    <div class="login-footer">
+      <p>सिर्फ कमेटी मेंबर के लिए</p>
+      <p>मदद के लिए फोन करें: <a href="tel:+918858871212"><i class="fas fa-phone"></i> +918858871212</a></p>
+    </div>
+  </div>
+  
+  <!-- Main App Container -->
+  <div id="appContainer">
+    <div class="container">
+      <header>
+        <div class="user-info">
+          <i class="fas fa-user-circle"></i>
+          <span id="loggedInUser">अतिथि</span>
+          <button class="logout-btn" onclick="logout()">
+            <i class="fas fa-sign-out-alt"></i> लॉग आउट
+          </button>
+        </div>
+        
+        <div class="pwa-controls">
+          <button class="pwa-btn" id="installButton" title="इंस्टॉल करें">
+            <i class="fas fa-download"></i>
+          </button>
+          <button class="pwa-btn" id="refreshButton" title="रिफ्रेश करें">
+            <i class="fas fa-sync-alt"></i>
+          </button>
+        </div>
+        
+        <div class="logo">
+          <i class="fas fa-mosque"></i>
+        </div>
+        <h1 class="app-title">मस्जिद मदरसा कमेटी रमिया बेहड़</h1>
+        <p class="app-subtitle">मस्जिद मदरसे का चंदा 2025</p>
+        <div class="pwa-status" id="pwaStatus">अस्सलामु अलईकुम</div>
+      </header>
+      
+      <div id="offlineMessage" class="offline-message" style="display: none;">
+        <i class="fas fa-wifi"></i> आपका नेट बंद है, बाराए मेहरबानी नेट खोलें
+      </div>
+      
+      <!-- Filter System -->
+      <div class="filter-system">
+        <div class="filter-group">
+          <span class="filter-label">महीना:</span>
+          <div class="month-dropdown">
+            <button class="month-dropdown-btn" id="monthDropdownBtn">
+              <i class="fas fa-calendar-alt"></i> सभी महीने
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="month-dropdown-content" id="monthDropdown">
+              <a href="#" data-month="all">सभी महीने</a>
+              <a href="#" data-month="0">मई</a>
+              <a href="#" data-month="1">जून</a>
+              <a href="#" data-month="2">जुलाई</a>
+              <a href="#" data-month="3">अगस्त</a>
+              <a href="#" data-month="4">सितंबर</a>
+              <a href="#" data-month="5">अक्टूबर</a>
+              <a href="#" data-month="6">नवंबर</a>
+              <a href="#" data-month="7">दिसंबर</a>
+              <a href="#" data-month="8">जनवरी</a>
+              <a href="#" data-month="9">फरवरी</a>
+              <a href="#" data-month="10">मार्च</a>
+              <a href="#" data-month="11">अप्रैल</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="filter-group">
+          <span class="filter-label">स्थिति:</span>
+          <button class="filter-btn active" id="showAllBtn">सभी</button>
+          <button class="filter-btn" id="showFilledBtn">जमा</button>
+          <button class="filter-btn" id="showEmptyBtn">बकाया</button>
+        </div>
+      </div>
+      
+      <div class="summary-box">
+        <div class="summary-title">वसूल की गई रक़म</div>
+        <div class="summary-value">₹ <span id="totalAmount">0</span></div>
+      </div>
+      
+      <div class="search-container">
+        <i class="fas fa-search"></i>
+        <input type="text" id="searchInput" placeholder="मेंबर का नाम खोजें..." oninput="filterList()">
+      </div>
+      
+      <div class="list-container" id="listContainer">
+        <div class="loading">
+          <i class="fas fa-spinner"></i>
+          <p>डेटा लोड हो रहा है...</p>
+        </div>
+      </div>
+      
+      <div class="debug-info" id="debugInfo">
+        <h3>गलत जानकारी:</h3>
+        <p id="errorMessage"></p>
+        <button onclick="loadData()" class="action-btn">
+          <i class="fas fa-sync-alt"></i> फिर से कोशिश करें
+        </button>
+      </div>
+    </div>
+    
+    <div class="snackbar" id="snackbar"></div>
+    
+    <div class="footer">
+      <p>© 2025 मस्जिद मदरसा कमेटी रमिया बेहड़ | जुमला हुकूक महफूज़</p>
+      <p id="appStatus">Status: Online</p>
+    </div>
+  </div>
+
+  <script>
+    // Google Apps Script Web App URL
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbywjZESA4i96qzJIEcQZyWpjuj2TFTbDVhCVhYTX21Gz-4gUFddvu-Xyg5Dsfe_voer/exec";
+    const MONTHS = ["मई", "जून", "जुलाई", "अगस्त", "सितंबर", "अक्टूबर", "नवंबर", "दिसंबर", "जनवरी", "फरवरी", "मार्च", "अप्रैल"];
+    
+    // DOM Elements
+    const loginContainer = document.getElementById('loginContainer');
+    const appContainer = document.getElementById('appContainer');
+    const loginForm = document.getElementById('loginForm');
+    const loginError = document.getElementById('loginError');
+    const errorText = document.getElementById('errorText');
+    const loggedInUser = document.getElementById('loggedInUser');
+    const searchInput = document.getElementById('searchInput');
+    const listContainer = document.getElementById('listContainer');
+    const snackbar = document.getElementById('snackbar');
+    const debugInfo = document.getElementById('debugInfo');
+    const errorMessage = document.getElementById('errorMessage');
+    const monthDropdownBtn = document.getElementById('monthDropdownBtn');
+    const monthDropdown = document.getElementById('monthDropdown');
+    const showAllBtn = document.getElementById('showAllBtn');
+    const showFilledBtn = document.getElementById('showFilledBtn');
+    const showEmptyBtn = document.getElementById('showEmptyBtn');
+    const totalAmount = document.getElementById('totalAmount');
+    const installButton = document.getElementById('installButton');
+    const refreshButton = document.getElementById('refreshButton');
+    const offlineMessage = document.getElementById('offlineMessage');
+    const appStatus = document.getElementById('appStatus');
+    const pwaStatus = document.getElementById('pwaStatus');
+    const rememberMeCheckbox = document.getElementById('rememberMe');
+    
+    // PWA variables
+    let deferredPrompt;
+    
+    // Filter state
+    let currentMonthFilter = 'all';
+    let currentStatusFilter = 'all';
+    
+    // Members data
+    let membersData = [];
+    
+    // User data
+    let currentUser = null;
+    
+    // Authorized users (in a real app, this would be stored securely on the server)
+    const authorizedUsers = [
+      { username: "Waseem", password: "Waseem@9272", name: "मुहम्मद वसीम" },
+      { username: "Naeem", password: "8318228195", name: "मौलाना नईम" },
+      { username: "Abdulkhaliq", password: "8423767005", name: "अब्दुल ख़ालिक़" }
+    ];
+    
+    // Initialize the application
+    document.addEventListener('DOMContentLoaded', () => {
+      // Check if user is already logged in
+      const savedUser = localStorage.getItem('committeeUser');
+      if (savedUser) {
+        try {
+          const user = JSON.parse(savedUser);
+          loginUser(user);
+        } catch (e) {
+          console.error('Error parsing saved user', e);
+          localStorage.removeItem('committeeUser');
+        }
+      }
+      
+      // Check for remembered credentials
+      const remembered = localStorage.getItem('rememberedCredentials');
+      if (remembered) {
+        try {
+          const credentials = JSON.parse(remembered);
+          document.getElementById('username').value = credentials.username;
+          document.getElementById('password').value = credentials.password;
+          rememberMeCheckbox.checked = true;
+        } catch (e) {
+          console.error('Error parsing remembered credentials', e);
+        }
+      }
+      
+      // Setup login form
+      loginForm.addEventListener('submit', handleLogin);
+      
+      // Initialize month dropdown
+      setupMonthDropdown();
+      
+      // Initialize filter buttons
+      setupFilterButtons();
+      
+      // Setup PWA features
+      setupPWA();
+      
+      // Setup service worker
+      registerServiceWorker();
+      
+      // Check online status
+      updateOnlineStatus();
+      window.addEventListener('online', updateOnlineStatus);
+      window.addEventListener('offline', updateOnlineStatus);
+    });
+    
+    // Handle login form submission
+    function handleLogin(e) {
+      e.preventDefault();
+      
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const rememberMe = rememberMeCheckbox.checked;
+      
+      if (!username || !password) {
+        showLoginError('कृपया यूजर आईडी और पासवर्ड दर्ज करें');
+        return;
+      }
+      
+      // Find user
+      const user = authorizedUsers.find(u => u.username === username && u.password === password);
+      
+      if (user) {
+        // Save user to localStorage
+        localStorage.setItem('committeeUser', JSON.stringify(user));
+        
+        // Save credentials if "Remember Me" is checked
+        if (rememberMe) {
+          localStorage.setItem('rememberedCredentials', JSON.stringify({ username, password }));
+        } else {
+          localStorage.removeItem('rememberedCredentials');
+        }
+        
+        loginUser(user);
+      } else {
+        showLoginError('गलत यूजर आईडी या पासवर्ड');
+      }
+    }
+    
+    // Log in user
+    function loginUser(user) {
+      currentUser = user;
+      loggedInUser.textContent = user.name;
+      
+      // Show app and hide login
+      loginContainer.style.display = 'none';
+      appContainer.style.display = 'block';
+      
+      // Load data
+      loadData();
+      
+      showSnackbar(`स्वागत है, ${user.name}!`);
+    }
+    
+    // Log out user
+    function logout() {
+      localStorage.removeItem('committeeUser');
+      currentUser = null;
+      
+      // Show login and hide app
+      appContainer.style.display = 'none';
+      loginContainer.style.display = 'block';
+      
+      // Clear form
+      document.getElementById('username').value = '';
+      document.getElementById('password').value = '';
+      loginError.style.display = 'none';
+      
+      showSnackbar('आप सफलतापूर्वक लॉग आउट हो गए हैं');
+    }
+    
+    // Show login error
+    function showLoginError(message) {
+      errorText.textContent = message;
+      loginError.style.display = 'block';
+    }
+    
+    // Setup PWA features
+    function setupPWA() {
+      // Before install prompt
+      window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        installButton.style.display = 'flex';
+      });
+      
+      // Install button handler
+      installButton.addEventListener('click', () => {
+        if (deferredPrompt) {
+          deferredPrompt.prompt();
+          deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+              showSnackbar('ऐप सफलतापूर्वक इंस्टॉल हुआ!');
+            }
+            deferredPrompt = null;
+            installButton.style.display = 'none';
+          });
+        }
+      });
+      
+      // App installed event
+      window.addEventListener('appinstalled', () => {
+        installButton.style.display = 'none';
+        showSnackbar('ऐप सफलतापूर्वक इंस्टॉल हुआ!');
+      });
+      
+      // Refresh button
+      refreshButton.addEventListener('click', () => {
+        loadData();
+        showSnackbar('डेटा रिफ्रेश किया जा रहा है...');
+      });
+    }
+    
+    // Register service worker
+    function registerServiceWorker() {
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js').then(registration => {
+          console.log('Service Worker registered with scope:', registration.scope);
+          pwaStatus.textContent = 'ऑफलाइन इस्तेमाल के लिए तैयार';
+        }).catch(error => {
+          console.log('Service Worker registration failed:', error);
+          pwaStatus.textContent = 'आपका खैर मक़दम है';
+        });
+      } else {
+        pwaStatus.textContent = 'आपका खैर मक़दम है';
+      }
+    }
+    
+    // Update online status
+    function updateOnlineStatus() {
+      if (navigator.onLine) {
+        offlineMessage.style.display = 'none';
+        appStatus.textContent = 'Status: Online';
+      } else {
+        offlineMessage.style.display = 'block';
+        appStatus.textContent = 'Status: Offline';
+        showSnackbar('आप ऑफलाइन हैं, लेकिन ऐप काम करेगा ');
+      }
+    }
+    
+    // Setup month dropdown functionality
+    function setupMonthDropdown() {
+      // Toggle dropdown on button click
+      monthDropdownBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        monthDropdown.classList.toggle('show');
+      });
+      
+      // Handle month selection
+      monthDropdown.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const month = link.getAttribute('data-month');
+          currentMonthFilter = month;
+          
+          // Update dropdown button text
+          if (month === 'all') {
+            monthDropdownBtn.innerHTML = '<i class="fas fa-calendar-alt"></i> सभी महीने <i class="fas fa-chevron-down"></i>';
+          } else {
+            const monthName = MONTHS[parseInt(month)];
+            monthDropdownBtn.innerHTML = `<i class="fas fa-calendar-alt"></i> ${monthName} <i class="fas fa-chevron-down"></i>`;
+          }
+          
+          // Hide dropdown
+          monthDropdown.classList.remove('show');
+          
+          // Apply filters
+          applyFilters();
+        });
+      });
+      
+      // Close dropdown when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.month-dropdown')) {
+          monthDropdown.classList.remove('show');
+        }
+      });
+    }
+    
+    // Setup filter buttons functionality
+    function setupFilterButtons() {
+      showAllBtn.addEventListener('click', () => {
+        currentStatusFilter = 'all';
+        updateActiveButton();
+        applyFilters();
+      });
+      
+      showFilledBtn.addEventListener('click', () => {
+        currentStatusFilter = 'filled';
+        updateActiveButton();
+        applyFilters();
+      });
+      
+      showEmptyBtn.addEventListener('click', () => {
+        currentStatusFilter = 'empty';
+        updateActiveButton();
+        applyFilters();
+      });
+    }
+    
+    // Update active filter button
+    function updateActiveButton() {
+      showAllBtn.classList.remove('active');
+      showFilledBtn.classList.remove('active');
+      showEmptyBtn.classList.remove('active');
+      
+      if (currentStatusFilter === 'all') {
+        showAllBtn.classList.add('active');
+      } else if (currentStatusFilter === 'filled') {
+        showFilledBtn.classList.add('active');
+      } else {
+        showEmptyBtn.classList.add('active');
+      }
+    }
+    
+    // Apply all active filters
+    function applyFilters() {
+      const searchTerm = searchInput.value.toLowerCase();
+      let total = 0;
+      
+      document.querySelectorAll('.accordion').forEach(accordion => {
+        const name = accordion.querySelector('.accordion-header span').textContent.toLowerCase();
+        const memberIndex = parseInt(accordion.id.split('-')[1]);
+        const memberData = membersData[memberIndex];
+        
+        // Apply name filter
+        const nameMatch = name.includes(searchTerm);
+        
+        // Apply status filter based on month selection
+        let statusMatch = true;
+        
+        if (currentStatusFilter === 'filled') {
+          if (currentMonthFilter === 'all') {
+            // Check if any month has data
+            statusMatch = memberData.slice(2).some(val => isNonEmpty(val));
+          } else {
+            // Check only selected month
+            const monthIndex = parseInt(currentMonthFilter);
+            statusMatch = isNonEmpty(memberData[monthIndex + 2]);
+          }
+        } else if (currentStatusFilter === 'empty') {
+          if (currentMonthFilter === 'all') {
+            // Check if all months are empty
+            statusMatch = memberData.slice(2).every(val => !isNonEmpty(val));
+          } else {
+            // Check only selected month
+            const monthIndex = parseInt(currentMonthFilter);
+            statusMatch = !isNonEmpty(memberData[monthIndex + 2]);
+          }
+        }
+        
+        // Show/hide based on all filters
+        if (nameMatch && statusMatch) {
+          accordion.style.display = '';
+          
+          // Calculate total amount for this member
+          if (currentMonthFilter === 'all') {
+            memberData.slice(2).forEach(amount => {
+              if (isNonEmpty(amount)) {
+                total += parseFloat(amount) || 0;
+              }
+            });
+          } else {
+            const amount = memberData[parseInt(currentMonthFilter) + 2];
+            if (isNonEmpty(amount)) {
+              total += parseFloat(amount) || 0;
+            }
+          }
+        } else {
+          accordion.style.display = 'none';
+        }
+      });
+      
+      // Update total amount
+      totalAmount.textContent = total.toLocaleString('hi-IN');
+    }
+    
+    // Load data from Google Sheet
+    async function loadData() {
+      try {
+        showLoading();
+        debugInfo.style.display = 'none';
+        
+        // Add timestamp to avoid caching
+        const url = `${SCRIPT_URL}?action=getData&t=${Date.now()}`;
+        
+        const response = await fetch(url);
+        
+        if (!response.ok) {
+          const errorText = await response.text();
+          throw new Error(`Server returned ${response.status}: ${errorText}`);
+        }
+        
+        const data = await response.json();
+        
+        if (!Array.isArray(data)) {
+          throw new Error('Invalid data format received from server');
+        }
+        
+        membersData = data;
+        displayData(data);
+        showSnackbar('डेटा कामयाबी के साथ लोड हुआ');
+      } catch (error) {
+        console.error('Error loading data:', error);
+        showError(error);
+      }
+    }
+    
+    // Show loading state
+    function showLoading() {
+      listContainer.innerHTML = `
+        <div class="loading">
+          <i class="fas fa-spinner"></i>
+          <p>डेटा लोड हो रहा है...</p>
+        </div>
+      `;
+    }
+    
+    // Show error state
+    function showError(error) {
+      errorMessage.textContent = error.message;
+      debugInfo.style.display = 'block';
+      
+      listContainer.innerHTML = `
+        <div class="empty-state">
+          <i class="fas fa-exclamation-triangle"></i>
+          <h3>डेटा लोड नहीं हुआ है</h3>
+          <p>बराए मेहरबानी फिर से कोशिश करें</p>
+        </div>
+      `;
+    }
+    
+    // Display data in the UI
+    function displayData(data) {
+      if (!data || data.length === 0) {
+        listContainer.innerHTML = `
+          <div class="empty-state">
+            <i class="fas fa-users-slash"></i>
+            <h3>कोई डेटा मौजूद नहीं</h3>
+            <p>बराए मेहरबानी डेटा जोड़ें या बाद में आएं</p>
+          </div>
+        `;
+        return;
+      }
+      
+      let html = '';
+      let total = 0;
+      
+      data.forEach((member, index) => {
+        // Skip header row if present
+        if (index === 0 && (member[0] === "नाम" || member[0] === "Name")) {
+          return;
+        }
+        
+        const name = member[0] || `सदस्य ${index + 1}`;
+        const phone = member[1] || 'N/A';
+        const monthsData = member.slice(2, 14) || Array(12).fill(''); // Ensure 12 months data
+        
+        // Calculate total for this member
+        monthsData.forEach(amount => {
+          if (isNonEmpty(amount)) {
+            total += parseFloat(amount) || 0;
+          }
+        });
+        
+        // Count filled months for indicator
+        const filledMonths = monthsData.filter(val => isNonEmpty(val)).length;
+        
+        html += `
+          <div class="accordion" id="member-${index}">
+            <div class="accordion-header">
+              <span>${name}</span>
+              <div class="month-status">
+                <div class="month-count">${filledMonths} महीने</div>
+                <i class="fas fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="accordion-body">
+              <div class="contact-info">
+                <div class="phone-number">
+                  <i class="fas fa-phone"></i> ${phone}
+                </div>
+                <div class="action-buttons">
+                  <button class="action-btn call-btn" onclick="window.open('tel:${phone}')">
+                    <i class="fas fa-phone-alt"></i> कॉल
+                  </button>
+                  <button class="action-btn sms-btn" onclick="window.open('sms:${phone}')">
+                    <i class="fas fa-comment-alt"></i> मैसेज
+                  </button>
+                </div>
+              </div>
+              
+              <div class="months-grid">
+        `;
+        
+        MONTHS.forEach((month, i) => {
+          const amount = monthsData[i] || '';
+          const isFilled = isNonEmpty(amount);
+          
+          html += `
+            <div class="month-input">
+              <label>
+                ${month}
+                <span class="month-indicator ${isFilled ? 'month-filled' : 'month-empty'}"></span>
+              </label>
+              <input type="text" 
+                     value="${amount}" 
+                     placeholder="रक़म जमा करें"
+                     data-member="${index}" 
+                     data-month="${i}"
+                     onchange="saveData(this)">
+            </div>
+          `;
+        });
+        
+        html += `
+              </div>
+            </div>
+          </div>
+        `;
+      });
+      
+      listContainer.innerHTML = html;
+      
+      // Update total amount
+      totalAmount.textContent = total.toLocaleString('hi-IN');
+      
+      // Add accordion toggle functionality
+      document.querySelectorAll('.accordion-header').forEach(header => {
+        header.addEventListener('click', () => {
+          const accordion = header.parentElement;
+          accordion.classList.toggle('active');
+        });
+      });
+    }
+    
+    // Filter the list based on search input
+    function filterList() {
+      applyFilters();
+    }
+    
+    // Save data to Google Sheet - UPDATED FUNCTION
+    async function saveData(input) {
+      const memberIndex = parseInt(input.getAttribute('data-member'));
+      const monthIndex = parseInt(input.getAttribute('data-month'));
+      const value = input.value;
+      
+      const memberData = membersData[memberIndex];
+      const name = memberData[0];
+      const phone = memberData[1] || '';
+      const monthName = MONTHS[monthIndex];
+      
+      try {
+        // Show saving indicator
+        input.style.background = '#fff9c4';
+        
+        // Prepare data to send
+        const payload = {
+          action: 'updateData',
+          memberId: memberIndex,
+          name: name,
+          phone: phone,
+          month: monthName,
+          value: value
+        };
+        
+        // Send data to Google Sheet
+        const response = await fetch(SCRIPT_URL, {
+          method: "POST",
+          body: JSON.stringify(payload),
+          headers: { 
+            "Content-Type": "application/json" 
+          }
+        });
+        
+        if (!response.ok) {
+          const errorText = await response.text();
+          throw new Error(`Save failed: ${response.status} - ${errorText}`);
+        }
+        
+        const result = await response.json();
+        
+        if (result.success) {
+          // Update local data
+          membersData[memberIndex][monthIndex + 2] = value;
+          showSnackbar(`${monthName} महीने की रक़म अपडेट हो गई है`);
+          
+          // Update indicator
+          const indicator = input.previousElementSibling.querySelector('.month-indicator');
+          if (isNonEmpty(value)) {
+            indicator.classList.remove('month-empty');
+            indicator.classList.add('month-filled');
+          } else {
+            indicator.classList.remove('month-filled');
+            indicator.classList.add('month-empty');
+          }
+          
+          // Update month count
+          const accordion = document.getElementById(`member-${memberIndex}`);
+          const monthCount = accordion.querySelector('.month-count');
+          const inputs = accordion.querySelectorAll('input');
+          let filledCount = 0;
+          
+          inputs.forEach(input => {
+            if (isNonEmpty(input.value)) {
+              filledCount++;
+            }
+          });
+          
+          monthCount.textContent = `${filledCount} महीने`;
+          
+          // Update total amount
+          applyFilters();
+        } else {
+          throw new Error(result.message || 'Save operation failed');
+        }
+        
+      } catch (error) {
+        console.error('Error saving data:', error);
+        showSnackbar("त्रुटि: " + error.message);
+        // Revert input value to original
+        input.value = membersData[memberIndex][monthIndex + 2] || '';
+      } finally {
+        // Reset input style
+        setTimeout(() => {
+          input.style.background = '';
+        }, 1000);
+      }
+    }
+    
+    // Show snackbar message
+    function showSnackbar(message) {
+      snackbar.textContent = message;
+      snackbar.classList.add('show');
+      
+      setTimeout(() => {
+        snackbar.classList.remove('show');
+      }, 3000);
+    }
+    
+    // Helper function to safely check if value is non-empty
+    function isNonEmpty(value) {
+      // Handle both string and number values safely
+      if (value === null || value === undefined) return false;
+      if (typeof value === 'number') return true;
+      return String(value).trim() !== '';
+    }
+  </script>
+  
+  <!-- Service Worker Script -->
+  <script>
+    // Register service worker
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('data:application/javascript;base64,Ly8gU2VydmljZSBXb3JrZXIgZm9yIE1vc3F1ZSBDb21taXR0ZWUgQXBwCmNvbnN0IENBQ0hFX05BTUUgPSAnbW9zcXVlLWFwcC1jYWNoZS12MSc7CmNvbnN0IHVybHNUb0NhY2hlID0gWwogICcuLycsCiAgJy4vaW5kZXguaHRtbCcsCiAgJ2h0dHBzOi8vY2RuanMuY2xvdWRmbGFyZS5jb20vYWpheC9saWJzL2ZvbnQtYXdlc29tZS82LjQuMC9jc3MvYWxsLm1pbi5jc3MnCl07CgovLyBJbnN0YWxsIHNlcnZpY2Ugd29ya2VyCnNlbGYuYWRkRXZlbnRMaXN0ZW5lcignaW5zdGFsbCcsIGV2ZW50ID0+IHsKICBldmVudC53YWl0VW50aWwoCiAgICBjYWNoZXMub3BlbihDQUNIRV9OQU1FKQogICAgICAudGhlbihjYWNoZSA9PiB7CiAgICAgICAgY29uc29sZS5sb2coJ09wZW5lZCBjYWNoZScpOwogICAgICAgIHJldHVybiBjYWNoZS5hZGRBbGwodXJsc1RvQ2FjaGUpOwogICAgICB9KQogICk7Cn0pOwoKLy8gRmV0Y2ggcmVzb3VyY2VzCnNlbGYuYWRkRXZlbnRMaXN0ZW5lcignZmV0Y2gnLCBldmVudCA+IHsKICBldmVudC5yZXNwb25kV2l0aCgKICAgIGNhY2hlcy5tYXRjaChldmVudC5yZXF1ZXN0KQogICAgICAudGhlbihyZXNwb25zZSA9PiB7CiAgICAgICAgLy8gQ2FjaGUgaGl0IC0gcmV0dXJuIHJlc3BvbnNlCiAgICAgICAgaWYgKHJlc3BvbnNlKSB7CiAgICAgICAgICByZXR1cm4gcmVzcG9uc2U7CiAgICAgICAgfQogICAgICAgIAogICAgICAgIC8vIENsb25lIHRoZSByZXF1ZXN0CiAgICAgICAgY29uc3QgZmV0Y2hSZXF1ZXN0ID0gZXZlbnQucmVxdWVzdC5jbG9uZSgpOwogICAgICAgIAogICAgICAgIHJldHVybiBmZXRjaChmZXRjaFJlcXVlc3QpLnRoZW4ocmVzcG9uc2UgPT4gewogICAgICAgICAgLy8gQ2hlY2sgaWYgd2UgcmVjZWl2ZWQgYSB2YWxpZCByZXNwb25zZQogICAgICAgICAgaWYgKCFyZXNwb25zZSB8fCByZXNwb25zZS5zdGF0dXMgIT09IDIwMCB8fCByZXNwb25zZS50eXBlICE9PSAnYmFzaWMnKSB7CiAgICAgICAgICAgIHJldHVybiByZXNwb25zZTsKICAgICAgICAgIH0KICAgICAgICAgIAogICAgICAgICAgLy8gQ2xvbmUgdGhlIHJlc3BvbnNlCiAgICAgICAgICBjb25zdCByZXNwb25zZVRvQ2FjaGUgPSByZXNwb25zZS5jbG9uZSgpOwogICAgICAgICAgCiAgICAgICAgICBjYWNoZXMub3BlbihDQUNIRV9OQU1FKQogICAgICAgICAgICAudGhlbihjYWNoZSA9PiB7CiAgICAgICAgICAgICAgY2FjaGUucHV0KGV2ZW50LnJlcXVlc3QsIHJlc3BvbnNlVG9DYWNoZSk7CiAgICAgICAgICAgIH0pOwogICAgICAgICAgCiAgICAgICAgICByZXR1cm4gcmVzcG9uc2U7CiAgICAgICAgfSk7CiAgICAgIH0pCiAgKTsKfSk7CgovLyBVcGRhdGUgc2VydmljZSB3b3JrZXIKc2VsZi5hZGRFdmVudExpc3RlbmVyKCdhY3RpdmF0ZScsIGV2ZW50ID0+IHsKICBjb25zdCBjYWNoZVdoaXRlbGlzdCA9IFtDQUNIRV9OQU1FXTsKICAKICBldmVudC53YWl0VW50aWwoCiAgICBjYWNoZXMua2V5cygpLnRoZW4oY2FjaGVOYW1lcyA9PiB7CiAgICAgIHJldHVybiBQcm9taXNlLmFsbCgKICAgICAgICBjYWNoZU5hbWVzLm1hcChjYWNoZU5hbWUgPT4gewogICAgICAgICAgaWYgKGNhY2hlV2hpdGVsaXN0LmluZGV4T2YoY2FjaGVOYW1lKSA9PT0gLTEpIHsKICAgICAgICAgICAgcmV0dXJuIGNhY2hlcy5kZWxldGUoY2FjaGVOYW1lKTsKICAgICAgICAgIH0KICAgICAgICB9KQogICAgICApOwogICAgfSkKICApOwp9KTs=');
+      });
+    }
+  </script>
+</body>
+</html>
